@@ -7,7 +7,7 @@ tone of any YouTube video's comment section in real time. Built as a
 complete ground-up redesign — no dashboards, no sidebars, no template 
 UI. Every comment is scored, visualized, and felt.
 
-![Resonance Intake Screen](screenshots/<img width="3024" height="1712" alt="Screenshot 2026-07-01 at 12 38 15 PM" src="https://github.com/user-attachments/assets/c94da4ab-8f0e-4280-8d3f-1058cfe8eed1" />.png)
+<img width="3024" height="1712" alt="Screenshot 2026-07-01 at 12 38 15 PM" src="https://github.com/user-attachments/assets/14270f32-6c5f-4e2a-9656-83a749471f2d" />
 
 ---
 
