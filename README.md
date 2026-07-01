@@ -87,6 +87,7 @@ Open [http://localhost:5173](http://localhost:5173)
 ---
 
 ## Architecture
+```text
 resonance/
 ├── backend/
 │   ├── app/
@@ -96,16 +97,17 @@ resonance/
 │   │   └── models.py      # Pydantic request/response schemas
 │   └── requirements.txt
 └── frontend/
-└── src/
-├── components/
-│   ├── field/     # 3D particle field, CenterStage
-│   ├── panels/    # Pulse, Voices, Signal, Lexicon
-│   ├── shell/     # Layout, ambient bg, command palette
-│   ├── intake/    # URL input capsule
-│   └── analytics/ # Charts, comment explorer table
-├── store/         # Zustand global state
-├── api/           # Axios API client
-└── lib/           # Mood colors, formatters
+    └── src/
+        ├── components/
+        │   ├── field/     # 3D particle field, CenterStage
+        │   ├── panels/    # Pulse, Voices, Signal, Lexicon
+        │   ├── shell/     # Layout, ambient bg, command palette
+        │   ├── intake/    # URL input capsule
+        │   └── analytics/ # Charts, comment explorer table
+        ├── store/         # Zustand global state
+        ├── api/           # Axios API client
+        └── lib/           # Mood colors, formatters
+```
 
 ---
 
