@@ -7,7 +7,7 @@ tone of any YouTube video's comment section in real time. Built as a
 complete ground-up redesign — no dashboards, no sidebars, no template 
 UI. Every comment is scored, visualized, and felt.
 
-![Resonance Intake Screen](screenshots/intake.png)
+![Resonance Intake Screen](screenshots/<img width="3024" height="1712" alt="Screenshot 2026-07-01 at 12 38 15 PM" src="https://github.com/user-attachments/assets/c94da4ab-8f0e-4280-8d3f-1058cfe8eed1" />.png)
 
 ---
 
@@ -24,8 +24,6 @@ analysis, and renders the results as a living spatial interface:
   sentiment over time, and the words driving the conversation
 - Scroll down for full analytics: charts, tables, and 
   click-to-filter by sentiment
-
-![Resonance Field View](screenshots/field.png)
 
 ---
 
@@ -45,13 +43,16 @@ analysis, and renders the results as a living spatial interface:
 ## Screenshots
 
 ### Intake
-![Intake](screenshots/intake.png)
+<img width="3024" height="1709" alt="Screenshot 2026-07-01 at 12 38 40 PM" src="https://github.com/user-attachments/assets/e6bf75cd-8ffa-43b4-8e22-a5987fa2a8af" />
 
 ### Field — Spatial Comment Visualization
-![Field](screenshots/field.png)
+<img width="3024" height="1716" alt="Screenshot 2026-07-01 at 12 39 03 PM" src="https://github.com/user-attachments/assets/550c07b7-5a69-484f-94e4-2362aa946ada" />
 
 ### Analytics — Charts & Comment Explorer
-![Analytics](screenshots/analytics.png)
+<img width="3024" height="1708" alt="Screenshot 2026-07-01 at 12 39 11 PM" src="https://github.com/user-attachments/assets/e85f7a5d-8bd6-4797-a6f3-6726e5a65559" />
+
+<img width="1512" height="982" alt="Screenshot 2026-07-01 at 12 40 12 PM" src="https://github.com/user-attachments/assets/a6d108d5-1a48-41ed-a492-9eaa6a716ac7" />
+
 
 ---
 
