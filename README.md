@@ -113,15 +113,17 @@ resonance/
 
 ## Design Philosophy
 
-Most sentiment tools look like analytics dashboards. Resonance 
-doesn't. The UI *is* the sentiment indicator — the color of the 
-entire interface shifts based on what the comment section feels 
-like. Panels float in space rather than sitting in a fixed sidebar. 
-The experience is closer to a spatial OS than a data tool.
+## Design
 
-Inspired by Apple VisionOS, Linear, Vercel, and Arc Browser — 
-but not copying any of their layouts.
+Built with a **Liquid Glass UI** — every panel is translucent, 
+blurred, and depth-aware. No solid cards, no flat colors. The 
+interface breathes with the data.
 
+- Glassmorphism panels with backdrop blur and dynamic borders
+- Mood-reactive ambient color — the background itself is the sentiment score
+- Spatial 3D comment field built with React Three Fiber
+- Physics-inspired animations via Motion and GSAP
+  
 ---
 
 ## Built by
