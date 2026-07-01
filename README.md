@@ -104,7 +104,6 @@ resonance/
         │   ├── shell/     # Layout, ambient bg, command palette
         │   ├── intake/    # URL input capsule
         │   └── analytics/ # Charts, comment explorer table
-        ├── store/         # Zustand global state
         ├── api/           # Axios API client
         └── lib/           # Mood colors, formatters
 ```
