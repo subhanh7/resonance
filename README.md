@@ -1,74 +1,127 @@
 # Resonance — YouTube Comment Sentiment Intelligence
 
-A complete rebuild of the original Streamlit app. No sidebar, no KPI-card dashboard —
-a spatial, mood-reactive interface for exploring what a video's comment section actually
-feels like, powered by the same real YouTube Data API v3 + NLTK VADER pipeline.
+> Drop a video. Hear what the room thinks.
 
-## Architecture
+A spatial, mood-reactive web application that analyzes the emotional 
+tone of any YouTube video's comment section in real time. Built as a 
+complete ground-up redesign — no dashboards, no sidebars, no template 
+UI. Every comment is scored, visualized, and felt.
 
-```
-resonance/
-├── backend/    FastAPI + YouTube Data API v3 + NLTK VADER
-└── frontend/   React 19 + TypeScript + Vite + Tailwind + R3F/Three.js + Motion + GSAP + Zustand + TanStack Query
-```
+![Resonance Intake Screen](screenshots/intake.png)
 
-The backend is a thin, real data pipeline: it fetches video metadata and paginated
-comment threads from YouTube, scores every comment with VADER, and derives:
-- an aggregate **mood** (delight / calm / friction / mixed) and a -1..1 mood score
-- a **timeline** of sentiment over the comment thread's natural order
-- a **lexicon** of the words most associated with positive/negative comments
-- **voices**: the warmest, sharpest, and most-liked comments
+---
 
-No mock data, no static JSON — every request hits the live API.
+## What it does
 
-## Run it
+Paste any YouTube URL. Resonance fetches every comment via the 
+YouTube Data API v3, scores each one using NLTK VADER sentiment 
+analysis, and renders the results as a living spatial interface:
 
-### 1. Backend
+- The entire background shifts color based on aggregate mood
+- Comments become a 3D particle field — sentiment drives position 
+  and color, engagement drives size
+- Floating glass panels show mood breakdown, standout voices, 
+  sentiment over time, and the words driving the conversation
+- Scroll down for full analytics: charts, tables, and 
+  click-to-filter by sentiment
 
+![Resonance Field View](screenshots/field.png)
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| Frontend | React 19, TypeScript, Vite, Tailwind CSS |
+| 3D / Animation | Three.js, React Three Fiber, Motion, GSAP |
+| State / Data | Zustand, TanStack Query |
+| Backend | FastAPI, Python |
+| Sentiment | NLTK VADER |
+| Data Source | YouTube Data API v3 |
+
+---
+
+## Screenshots
+
+### Intake
+![Intake](screenshots/intake.png)
+
+### Field — Spatial Comment Visualization
+![Field](screenshots/field.png)
+
+### Analytics — Charts & Comment Explorer
+![Analytics](screenshots/analytics.png)
+
+---
+
+## Running locally
+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- A YouTube Data API v3 key 
+  ([get one here](https://console.cloud.google.com))
+
+### Backend
 ```bash
 cd backend
 python3 -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-# edit .env and paste your YouTube Data API v3 key
+# Add your YouTube API key to .env
 uvicorn app.main:app --reload --port 8000
 ```
 
-Get a key: console.cloud.google.com → enable **YouTube Data API v3** → Credentials → Create API key.
-
-The first request downloads the NLTK VADER lexicon automatically (cached after that).
-
-### 2. Frontend
-
+### Frontend
 ```bash
 cd frontend
 npm install
-cp .env.example .env     # defaults to http://localhost:8000, fine for local dev
+cp .env.example .env
 npm run dev
 ```
 
-Open http://localhost:5173, paste a YouTube URL, and the field will populate with real,
-live-scored comments.
+Open [http://localhost:5173](http://localhost:5173)
 
-## The experience
+---
 
-- **Intake**: a single centered glass capsule. Paste a link, nothing else on screen.
-- **The Field**: comments become a 3D particle field (React Three Fiber) — sentiment
-  drives vertical position and color (cool indigo → warm coral), engagement drives
-  how far a point sits from the center. Drag to orbit, scroll to zoom.
-- **Floating panels** (Pulse, Voices, Signal, Lexicon) sit around the field, not in a
-  fixed sidebar. Close one and it becomes a small pill at the bottom edge; bring it
-  back with a click, or summon the full set with **⌘K**.
-- **Ambient color**: the whole background tints toward the mood — there's no separate
-  "sentiment score" widget pretending to be the headline; the UI's own color is the
-  headline.
+## Architecture
+resonance/
+├── backend/
+│   ├── app/
+│   │   ├── main.py        # FastAPI app, /api/analyze endpoint
+│   │   ├── youtube.py     # YouTube Data API v3 client
+│   │   ├── sentiment.py   # VADER scoring, mood, timeline, lexicon
+│   │   └── models.py      # Pydantic request/response schemas
+│   └── requirements.txt
+└── frontend/
+└── src/
+├── components/
+│   ├── field/     # 3D particle field, CenterStage
+│   ├── panels/    # Pulse, Voices, Signal, Lexicon
+│   ├── shell/     # Layout, ambient bg, command palette
+│   ├── intake/    # URL input capsule
+│   └── analytics/ # Charts, comment explorer table
+├── store/         # Zustand global state
+├── api/           # Axios API client
+└── lib/           # Mood colors, formatters
 
-## Notes for production hardening
+---
 
-- Add response caching (Redis or in-memory TTL) keyed by `video_id` to avoid burning
-  YouTube API quota on repeat lookups.
-- The `/api/analyze` call is synchronous; for very large comment counts (close to the
-  2000 cap) consider moving to a background job + polling/streaming if your hosting
-  has stricter request timeouts.
-- Lock `CORS_ORIGINS` down to your real deployed frontend origin before shipping.
+## Design Philosophy
+
+Most sentiment tools look like analytics dashboards. Resonance 
+doesn't. The UI *is* the sentiment indicator — the color of the 
+entire interface shifts based on what the comment section feels 
+like. Panels float in space rather than sitting in a fixed sidebar. 
+The experience is closer to a spatial OS than a data tool.
+
+Inspired by Apple VisionOS, Linear, Vercel, and Arc Browser — 
+but not copying any of their layouts.
+
+---
+
+## Built by
+
+Mohammed Subhan
